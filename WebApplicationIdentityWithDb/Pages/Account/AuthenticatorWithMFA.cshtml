@@ -1,0 +1,44 @@
+﻿@page
+@model WebApplicationIdentityWithDb.Pages.Account.AuthenticatorWithMFAModel
+@{
+}
+
+<h3>Step 1:</h3>
+<p>Please enter the key or scan the QR Code to your authenticator app:</p>
+<p>
+    <img src="@string.Format("data:image/png;base64,{0}", @Convert.ToBase64String(Model.viewModel.QrCode))" width="300" height="300" />
+</p>
+<br />
+<p>@Model.viewModel.Key</p>
+<br />
+<h3>
+    Step 2:
+    Please enter the code for your authenticator app:
+</h3>
+<form method="post">
+    @if (Model.Succeded)
+    {
+        <div class="alert alert-success">
+            <p>The Authenticator is successfully setup.</p>
+        </div>
+    }
+    <div class="text-danger" asp-validation-summary="All"></div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="viewModel.SecurityCode"></label>
+        </div>
+        <div class="col">
+            <input type="text" asp-for="viewModel.SecurityCode" class="form-control" autocomplete="off" />
+        </div>
+        <span class="text-danger" asp-validation-for="viewModel.SecurityCode"></span>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <input type="submit" class="btn btn-primary" value="Verify" />
+        </div>
+    </div>
+    <div>
+        <input type="hidden" asp-for="viewModel.Key" />
+        <input type="hidden" asp-for="viewModel.QrCode" />
+    </div>
+</form>

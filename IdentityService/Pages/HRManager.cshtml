@@ -1,0 +1,30 @@
+﻿@page
+@model IdentityService.Pages.HRManagerModel
+@{
+}
+
+<div>
+    <h1>HR Manager</h1>
+    <table class=" table table-bordered table-striped">
+        <thead>
+            <tr>
+                <td>Date</td>
+                <td>Temp C</td>
+                <td>Temp F</td>
+                <td>Summary</td>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach(var item in Model.Forecasts)
+        {
+            <tr>
+                <td>@item.Date.ToLongDateString() </td>
+                <td>@item.TemperatureC</td>
+                <td>@item.TemperatureF</td>
+                <td>@item.Summary</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+</div>

@@ -1,0 +1,54 @@
+﻿@page
+@model WebApplicationIdentityWithDb.Pages.Account.RegisterModel
+@{
+}
+
+<h3>User Registration</h3>
+<div class="container border" style="padding:20px">
+    <form method="post">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row mb-4">
+            <div class="col-2">
+                <label asp-for="registerViewModel.Email"></label>
+            </div>
+            <div class="col-5">
+                <input class="form-control" type="text" asp-for="registerViewModel.Email" />
+            </div>
+            <span class="text-danger" asp-validation-for="registerViewModel.Email"></span>
+        </div>
+        <div class="form-group row mb-4">
+            <div class="col-2">
+                <label asp-for="registerViewModel.Password"></label>
+            </div>
+            <div class="col-5">
+                <input class="form-control" type="password" asp-for="registerViewModel.Password" />
+            </div>
+            <span class="text-danger" asp-validation-for="registerViewModel.Password"></span>
+        </div>
+        <div class="form-group row mb-4">
+            <div class="col-2">
+                <label asp-for="registerViewModel.Department"></label>
+            </div>
+            <div class="col-5">
+                <input class="form-control" type="text" asp-for="registerViewModel.Department" />
+            </div>
+            <span class="text-danger" asp-validation-for="registerViewModel.Department"></span>
+        </div>
+        <div class="form-group row mb-4">
+            <div class="col-2">
+                <label asp-for="registerViewModel.Position"></label>
+            </div>
+            <div class="col-5">
+                <input class="form-control" type="text" asp-for="registerViewModel.Position" />
+            </div>
+            <span class="text-danger" asp-validation-for="registerViewModel.Position"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <input type="submit" class="btn btn-primary" value="Register" />
+            </div>
+            <div class="col">
+            </div>
+        </div>
+    </form>
+</div>

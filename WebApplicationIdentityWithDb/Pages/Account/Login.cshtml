@@ -1,0 +1,54 @@
+﻿@page
+@model WebApplicationIdentityWithDb.Pages.Account.LoginModel
+@{
+}
+<h3>User Login</h3>
+<div class="container border" style="padding:20px">
+    <form method="post">
+        <div class="text-danger" asp-validation-summary="All"></div>
+        <div class="form-group row mb-4">
+            <div class="col-2">
+                <label asp-for="Credential.Email"></label>
+            </div>
+            <div class="col-5">
+                <input class="form-control" type="text" asp-for="Credential.Email"/>
+            </div>
+            <span class="text-danger" asp-validation-for="Credential.Email"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Credential.Password"></label>
+            </div>
+            <div class="col-5">
+                <input class="form-control" type="password" asp-for="Credential.Password"/>
+            </div>
+            <span class="text-danger" asp-validation-for="Credential.Password"></span>
+        </div>
+        <div class="row form-check mb-2">
+            <div class="col-2">
+                <input type="checkbox" asp-for="Credential.RememberMe" class="form-check"/>
+                <label class="form-check-label" asp-for="Credential.RememberMe"></label>
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <input type="submit" class="btn btn-primary" value="Login"/>
+            </div>
+            <div class="col">
+                <a class="btn btn-link" href="/account/register">SignUp</a>
+            </div>
+        </div>
+        <p>
+            Social Media Logins:
+            <div class="form-group">
+                @foreach(var provider in Model.ExternalLoginProviders)
+                {
+                    <button type="submit" asp-page-handler="LoginExternally" name="provider" value="@provider.Name" class="btn btn-primary">Login with @provider.DisplayName</button>
+                }
+            </div>
+        </p>
+    </form>
+</div>
